@@ -1,8 +1,43 @@
 {
-  "name": "react-native-spinkit",
-  "version": "1.1.1",
+  "_args": [
+    [
+      "react-native-spinkit@0.1.5",
+      "/Users/m/Desktop/adel-pharmacy-react-native"
+    ]
+  ],
+  "_from": "react-native-spinkit@0.1.5",
+  "_id": "react-native-spinkit@0.1.5",
+  "_inBundle": false,
+  "_integrity": "sha1-KfBMD4hpVqLJYTiLzS5nQTkfG4w=",
+  "_location": "/react-native-spinkit",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "react-native-spinkit@0.1.5",
+    "name": "react-native-spinkit",
+    "escapedName": "react-native-spinkit",
+    "rawSpec": "0.1.5",
+    "saveSpec": null,
+    "fetchSpec": "0.1.5"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-spinkit/-/react-native-spinkit-0.1.5.tgz",
+  "_spec": "0.1.5",
+  "_where": "/Users/m/Desktop/adel-pharmacy-react-native",
+  "author": {
+    "name": "Maxime Mezrahi",
+    "email": "maxime.mezrahi@gmail.com",
+    "url": "https://github.com/maxs15"
+  },
+  "bugs": {
+    "url": "https://github.com/maxs15/react-native-spinkit/issues"
+  },
+  "dependencies": {},
   "description": "A collection of animated loading indicators for React Native",
-  "main": "index.js",
+  "homepage": "https://github.com/maxs15/react-native-spinkit#readme",
   "keywords": [
     "react-component",
     "react-native",
@@ -13,21 +48,16 @@
     "loader",
     "indicator"
   ],
+  "main": "index.js",
+  "name": "react-native-spinkit",
   "repository": {
     "type": "git",
     "url": "git://github.com/maxs15/react-native-spinkit.git"
   },
-  "author": {
-    "name": "Maxime Mezrahi",
-    "email": "maxime.mezrahi@gmail.com",
-    "url": "https://github.com/maxs15"
-  },
   "rnpm": {
-		"commands": {
-			"prelink": "node ./node_modules/react-native-spinkit/scripts/rnpm-prelink.js"
-		}
-	},
-  "dependencies": {
-    "prop-types": "^15.5.8"
-  }
+    "commands": {
+      "prelink": "node ./node_modules/react-native-spinkit/scripts/rnpm-prelink.js"
+    }
+  },
+  "version": "0.1.5"
 }

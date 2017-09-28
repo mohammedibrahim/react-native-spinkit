@@ -1,13 +1,13 @@
 #import "RNSpinkit.h"
-#import <React/RCTConvert.h>
-#import <React/RCTBridgeModule.h>
-#import <React/UIView+React.h>
+#import "RCTConvert.h"
+#import "RCTBridgeModule.h"
+#import "UIView+React.h"
 
 @implementation RNSpinkit
 {
    RTSpinKitView *_spinner;
    NSString *_type;
-   UIColor *_color;
+   NSString *_color;
    NSNumber *_size;
 }
 
@@ -37,15 +37,16 @@
    return _type;
 }
 
-- (void)setColor:(NSNumber*)color
+- (void)setColor:(NSString*)color
 {
-   _color = [RCTConvert UIColor:color];
+   _color = color;
    if (_spinner) {
-      [_spinner setColor:_color];
+      UIColor *color = [self getColorFromString:_color];
+      [_spinner setColor:color];
    }
 }
 
-- (UIColor*)color {
+- (NSString*)color {
    return _color;
 }
 
@@ -86,14 +87,29 @@
    return style;
 }
 
+- (UIColor*)getColorFromString:(NSString*)color
+{
+   unsigned rgbValue = 0;
+   NSScanner *scanner = [NSScanner scannerWithString:color];
+   [scanner setScanLocation:1]; // bypass '#' character
+   [scanner scanHexInt:&rgbValue];
+
+   if (color.length == @"#00000000".length) {
+      return [UIColor colorWithRed:((rgbValue & 0xFF000000) >> 24)/255.0 green:((rgbValue & 0xFF0000) >> 16)/255.0 blue:((rgbValue & 0xFF00) >> 8)/255.0 alpha:(rgbValue & 0xFF)/255.0];
+   }
+
+   return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
 #pragma mark - React View Management
 
 - (void)layoutSubviews
 {
    [super layoutSubviews];
    if (_spinner == nil) {
+      UIColor *color = [self getColorFromString:_color];
       RTSpinKitViewStyle style = [self getStyleFromString:_type];
-      _spinner = [[RTSpinKitView alloc] initWithStyle:style color:_color spinnerSize:[_size floatValue]];
+      _spinner = [[RTSpinKitView alloc] initWithStyle:style color:color spinnerSize:[_size floatValue]];
       [self insertSubview:_spinner atIndex:0];
    }
 }
